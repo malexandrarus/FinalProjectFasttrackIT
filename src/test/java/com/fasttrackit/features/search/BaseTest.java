@@ -13,6 +13,9 @@ public class BaseTest {
     public WebDriver webDriver;
 
     @Steps
+    protected MyAccountSteps myAccountSteps;
+
+    @Steps
     protected LoginSteps loginSteps;
 
     @Steps
