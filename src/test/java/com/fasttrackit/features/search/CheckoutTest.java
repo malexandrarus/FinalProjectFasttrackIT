@@ -4,11 +4,22 @@ import com.fasttrackit.model.CheckoutBillingInformation;
 import com.fasttrackit.model.CheckoutShippingInformation;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(SerenityRunner.class)
 public class CheckoutTest extends BaseTest {
+
+    @Before
+    public void setUp() {
+        // make sure to delete all previous data from cart
+        loginSteps.doLogin();
+        cartSteps.clickViewYourShoppingCartButton();
+        cartSteps.removeFromCart();
+        myAccountSteps.goToMyAccountTab();
+        myAccountSteps.clickLogoutButton();
+    }
 
     @Test
     public void checkoutAsGuestTest() {

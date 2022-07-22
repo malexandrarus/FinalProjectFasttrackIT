@@ -1,11 +1,24 @@
 package com.fasttrackit.features.search;
 
 import net.serenitybdd.junit.runners.SerenityRunner;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(SerenityRunner.class)
 public class CartTest extends BaseTest {
+
+
+    @Before
+    public void setUp() {
+        // make sure to delete all previous data from cart
+        loginSteps.doLogin();
+        cartSteps.clickViewYourShoppingCartButton();
+        cartSteps.removeFromCart();
+        myAccountSteps.goToMyAccountTab();
+        myAccountSteps.clickLogoutButton();
+    }
 
     @Test
     public void navigateToCartUsingVieCartButtonFromProductDetailsPageTest() {
